@@ -4,7 +4,7 @@ def pref_fun(x):
     d = {0:0}
     for i in range(1,len(x)):
         j = d[i-1]
-        while j > 0 and x[j] > x[i]:
+        while j > 0 and x[j] != x[i]:
             j = d[j-1]
         if x[j] == x[i]:
             j += 1
