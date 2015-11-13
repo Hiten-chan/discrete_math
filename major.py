@@ -9,6 +9,7 @@ def major(a):
             if count == -1:
                 e = a[i]
                 count = 1
+# addition code
     n = 0
     for x in a:
         if e == x:
