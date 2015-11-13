@@ -1,6 +1,9 @@
 def find_gene(lst, start):
     out_lst = lst[:]
+    m = abs(lst[0] - start)
     for  i, e in enumerate(lst):
         lst[i] = abs(e - start)
-    m = lst.index(min(lst))
-    return out_lst[m]
+        if lst[i] < m:
+            m = lst[i]
+    n = lst.index(m)
+    return out_lst[n]
