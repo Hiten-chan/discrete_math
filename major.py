@@ -15,4 +15,4 @@ def major(a):
             n += 1
     if n < len(a)/2:
         e = None
-    print(e)
+    return e
