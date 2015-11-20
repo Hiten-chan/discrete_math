@@ -35,8 +35,6 @@ def search(m, x):
     lst = merge_sort(m)
     if len(lst) == 1:
         if lst[0] == x:
-            return 0
-        else:
             return 'Искомых элементов в массиве нет'
     
     l = 0
