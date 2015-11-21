@@ -35,18 +35,18 @@ def search(m, x):
     lst = merge_sort(m)
     if len(lst) == 1:
         if lst[0] == x:
-            return 'Искомых элементов в массиве нет'
+            return False
     
     l = 0
     r = int(len(lst)-1)
     
     while l != r:
         if lst[l] + lst[r] == x:
-            return lst[l], lst[r]
+            return True
         else:
             if lst[l] + lst[r] > x:
                 r -= 1
             else:
                 l += 1
             
-    return 'Искомых элементов в массиве нет'
+    return False
