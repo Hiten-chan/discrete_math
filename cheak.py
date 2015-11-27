@@ -1,27 +1,49 @@
-# Пусть нам дана скобочная последовательность, записанная в строке a. 
-# Возьмем переменные counter_1 = 0 и counter_2 = 0, которые будут отражать "баланс скобок". 
-# Будем последовательно перебирать все символы строки a. 
-# Если мы встречаем открывающую скобку вида "(", то увеличиваем counter_1 на 1.
-# Если мы встречаем открывающую скобку вида "{", то увеличиваем counter_2 на 1.
-# Если мы встречаем закрывающую скобку вида ")", то уменьшаем counter_1 на 1.
-# Если мы встречаем закрывающую скобку вида "}", то уменьшаем counter_2 на 1.
-# Если на протяжении всего перебора переменные counter_1 и counter_2 были 
-# неотрицательными (не встречалось закрывающих скобок, для которых не было соответствующих открывающих), 
-# и после завершения цикла переменные остались = 0 (все открывающие скобки закрыты, при этом нет лишних закрытых скобок), 
-# то скобочная последовательность правильна. 
-
-def cheak(a):
-    counter_1 = 0
-    counter_2 = 0
-    for i in range(0, len(a)):
-        if a[i] == '(':
-            counter_1 += 1
-        elif a[i] == '{':
-            counter_2 += 1 
-        elif a[i] == ')':
-            counter_1 -= 1
-        elif a[i] == '}':
-            counter_2 -= 1
-        if counter_1 < 0 or counter_2 < 0:
+class Stack:
+    
+    def __init__(self, l):
+        self.items = [0 for x in range(l)]
+        self.i = 0
+        
+# Добавляет элемент в стек     
+    def push(self, e):
+        if self.i == len(self.items):
+            print ("Стек полный")
+        else:
+            self.items[self.i] = e
+            self.i += 1
+    
+# Удалить число с верхушки стека (последенее число)
+    def pop(self):
+        self.i -= 1
+        
+# Длина стека      
+    def size(self):
+        return(self.i)
+    
+# Проверка стека на пустоту   
+    def IsEmpty(self):
+        if self.i == 0:
+            return True
+        else:
             return False
-    return counter_1 == 0 and counter_2 == 0
+            
+# Вернуть последний добавленный элемент         
+    def top(self):
+        return self.items[self.i-1]
+    
+    
+def cheack(s):
+    st_1 = Stack(len(s))
+    for i in range(len(s)):
+        if s[i] == '(' or s[i] == '{':
+            st_1.push(s[i])
+        else:
+            if st_1.IsEmpty() == True:
+                return False
+            elif s[i] == ')' and st_1.top() == '(':
+                st_1.pop()
+            elif s[i] == '}' and st_1.top() == '{':
+                st_1.pop()
+            else:
+                return False
+    return st_1.IsEmpty()
