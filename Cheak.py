@@ -7,12 +7,12 @@ class Stack:
 # Добавляет элемент в стек     
     def push(self, e):
         if self.i == len(self.items):
-            print ("Стек полный")
+            print ("Full")
         else:
             self.items[self.i] = e
             self.i += 1
     
-# Удалить число с верхушки стека (последенее число)
+# Удаляет число с верхушки стека (последенее число)
     def pop(self):
         self.i -= 1
         
