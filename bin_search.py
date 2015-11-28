@@ -5,7 +5,7 @@ def bin_search(a, key):
     r = int(len(a) + 1)
     
     if key > a[int(len(a))-1]:
-        return 'Not found'
+        return -1
     else:
         while l < r - 1:              
             m = int((l + r) / 2)            
@@ -19,4 +19,4 @@ def bin_search(a, key):
         elif a[0] == key:
             return 0
         else:
-            return 'Not found'
+            return -1
